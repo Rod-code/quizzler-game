@@ -25,7 +25,7 @@ const Login = () => {
         const user = userCredential.user;
         console.log('User logged in:', user);
         setLoginStatus('Login successful');
-        navigate("/")
+        navigate("/home")
       
       })
       .catch((error) => {

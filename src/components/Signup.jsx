@@ -39,7 +39,7 @@ const Signup = () => {
         // User registration successully
       await createUserWithEmailAndPassword(auth, email, password);
       setRegistrationStatus('User registered successfully');
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       // User registration failed
       const errorCode = error.code;
@@ -55,7 +55,7 @@ const Signup = () => {
         const user = result.user;
         console.log('User signed in with Google:', user);
         setRegistrationStatus('Google sign-in successful');
-        navigate('/');
+        navigate('/home');
       })
       .catch((error) => {
         // Google sign-in failed
