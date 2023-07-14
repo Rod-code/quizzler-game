@@ -44,7 +44,7 @@ const Login = () => {
         const user = result.user;
         console.log('User signed in with Google:', user);
         setLoginStatus('Google sign-in successful');
-        navigate('/');
+        navigate('/home');
       })
       .catch((error) => {
         // Google sign-in failed
