@@ -39,7 +39,7 @@ const Signup = () => {
         // User registration successully
       await createUserWithEmailAndPassword(auth, email, password);
       setRegistrationStatus('User registered successfully');
-      navigate("/login");
+      navigate("/home");
     } catch (error) {
       // User registration failed
       const errorCode = error.code;
