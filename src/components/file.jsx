@@ -168,3 +168,49 @@
 
 
 
+
+ // const renderOptions = () => {
+  //   const options = questions[currentQuestion].options;
+  //   const halfLength = Math.ceil(options.length / 2);
+  //   const leftOptions = options.slice(0, halfLength);
+  //   const rightOptions = options.slice(halfLength);
+  
+  //   return (
+  //     <div className="grid grid-cols-2 gap-4 my-4 ">
+  //       <div className="flex flex-col my-4 gap-4">
+  //         {leftOptions.map((option, index) => (
+  //           <div
+  //             key={index}
+  //             onClick={() => handleOptionSelect(option)}
+  //             className={`option ${
+  //               selectedOption === option
+  //                 ? isOptionCorrect(option)
+  //                   ? 'bg-green-400'
+  //                   : 'bg-red-400'
+  //                 : 'bg-green-700'
+  //             } w-[200px] h-[45px] p-2 rounded-2xl cursor-pointer`}
+  //           >
+  //             {option}
+  //           </div>
+  //         ))}
+  //       </div>
+  //       <div className="flex flex-col my-4 gap-4">
+  //         {rightOptions.map((option, index) => (
+  //           <div
+  //             key={index}
+  //             onClick={() => handleOptionSelect(option)}
+  //             className={`option ${
+  //               selectedOption === option
+  //                 ? isOptionCorrect(option)
+  //                  ? 'bg-green-400'
+  //                   : 'bg-red-400'
+  //                 : 'bg-green-700'
+  //             } w-[200px] h-[45px] p-2 rounded-2xl cursor-pointer`}
+  //           >
+  //             {option}
+  //           </div>
+  //         ))}
+  //       </div>
+  //     </div>
+  //   );
+  // };

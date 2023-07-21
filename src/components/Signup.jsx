@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { auth, googleProvider } from '../config/firebase';
-import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Signup = () => {
@@ -27,6 +27,7 @@ const Signup = () => {
   const handleConfirmPasswordChange = (e) => {
     setConfirmPassword(e.target.value);
   };
+ 
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -39,7 +40,7 @@ const Signup = () => {
         // User registration successully
       await createUserWithEmailAndPassword(auth, email, password);
       setRegistrationStatus('User registered successfully');
-      navigate("/home");
+      navigate("/");
     } catch (error) {
       // User registration failed
       const errorCode = error.code;
@@ -55,6 +56,7 @@ const Signup = () => {
         const user = result.user;
         console.log('User signed in with Google:', user);
         setRegistrationStatus('Google sign-in successful');
+        
         navigate('/');
       })
       .catch((error) => {

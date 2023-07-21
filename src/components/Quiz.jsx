@@ -43,14 +43,14 @@ const Quiz = () => {
     }
   };
 
-  const handleNextQuestion = () => {
-    if (selectedOption === questions[currentQuestion].correctAnswer) {
-      setScore(score + 1);
-    }
+  // const handleNextQuestion = () => {
+  //   if (selectedOption === questions[currentQuestion].correctAnswer) {
+  //     setScore(score + 1);
+  //   }
 
-    setSelectedOption(null);
-    setCurrentQuestion(currentQuestion + 1);
-  };
+  //   setSelectedOption(null);
+  //   setCurrentQuestion(currentQuestion + 1);
+  // };
   if (currentQuestion >= questions.length) {
     // Save the user score and username to the database
     try {
@@ -68,65 +68,51 @@ const Quiz = () => {
   const isOptionCorrect = (option) => {
     return option === questions[currentQuestion].correctAnswer;
   };
-  
   const renderOptions = () => {
     const options = questions[currentQuestion].options;
-    const halfLength = Math.ceil(options.length / 2);
-    const leftOptions = options.slice(0, halfLength);
-    const rightOptions = options.slice(halfLength);
+    const correctAnswer = questions[currentQuestion].correctAnswer;
+    const isAnswered = selectedOption !== null;
   
     return (
-      <div className="grid grid-cols-2 gap-4 my-4 ">
-        <div className="flex flex-col my-4 gap-4">
-          {leftOptions.map((option, index) => (
+      <div className="grid grid-cols-2 gap-4 my-4  text-white">
+        {options.map((option, index) => {
+          const isOptionSelected = selectedOption === option;
+          const isCorrect = isOptionCorrect(option);
+          const optionClass = `option w-[200px] h-[45px] p-2 rounded-2xl cursor-pointer ${
+            isAnswered
+              ? isCorrect
+                ? 'bg-green-400'
+                : isOptionSelected
+                ? 'bg-red-500'
+                : 'bg-green-700'
+              : 'bg-green-700'
+          }`;
+  
+          return (
             <div
               key={index}
               onClick={() => handleOptionSelect(option)}
-              className={`option ${
-                selectedOption === option
-                  ? isOptionCorrect(option)
-                    ? 'bg-green-400'
-                    : 'bg-red-400'
-                  : 'bg-green-700'
-              } w-[200px] h-[45px] p-2 rounded-2xl cursor-pointer`}
+              className={optionClass}
             >
               {option}
             </div>
-          ))}
-        </div>
-        <div className="flex flex-col my-4 gap-4">
-          {rightOptions.map((option, index) => (
-            <div
-              key={index}
-              onClick={() => handleOptionSelect(option)}
-              className={`option ${
-                selectedOption === option
-                  ? isOptionCorrect(option)
-                    ? 'bg-green-400'
-                    : 'bg-red-400'
-                  : 'bg-green-700'
-              } w-[200px] h-[45px] p-2 rounded-2xl cursor-pointer`}
-            >
-              {option}
-            </div>
-          ))}
-        </div>
+          );
+        })}
       </div>
     );
   };
-  
 
 
   if (questions.length === 0) {
-    return <div className="bg-green-600 min-h-screen flex flex-col items-center justify-center">Loading...</div>;
+    return <div className="bg-green-600 min-h-screen flex flex-col items-center justify-center  text-white">Loading...</div>;
   }
 
   if (currentQuestion >= questions.length) {
     return (
       <div className="flex flex-col items-center bg-green-600 min-h-screen">
-        <h1 className="text-4xl font-bold">Quiz Finished!</h1>
+        <h1 className="text-4xl font-bold text-white">Quiz Finished!</h1>
         {/* <img src ={congratulations}/> */}
-        <h2 className="text-2xl mt-4">Final Score: {score}</h2>
+        <h2 className="text-2xl mt-4 text-white">Final Score: {score} out 3</h2>
         <button className="px-10 py-1 mt-8 text-sm text-white font-semibold rounded-full border border-green-400 hover:text-green hover:bg-green-800 hover:border-green focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2"><Link to='/'>Try Again</Link></button>
         <h1 className="px-10 py-1 mt-8 text-sm text-white font-semibold rounded-full border border-green-400 hover:text-green hover:bg-green-800 hover:border-green focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2"><Link to='/leaderboard'>See top Leaders</Link></h1>
       </div>
@@ -135,7 +121,7 @@ const Quiz = () => {
 
   return (
     <div className="flex flex-col items-center bg-green-600 min-h-screen">
-      <h2 className="text-xl">Question {currentQuestion + 1}</h2>
+      <h2 className="text-xl font-bold text-white">Question {currentQuestion + 1}</h2>
 
   <img src={questions[currentQuestion].question} alt="" className="w-[230px] h-[250px] rounded-lg" />
 
@@ -143,13 +129,13 @@ const Quiz = () => {
       <div className="options mt-4 px-4">
         {renderOptions()}
       </div>
-      <button
+      {/* <button
         onClick={handleNextQuestion}
         disabled={!selectedOption}
         className="px-4 py-2 mt-4 bg-green-700 text-white rounded disabled:bg-gray-400"
       >
         Next
-      </button>
+      </button> */}
     </div>
   );
 };
