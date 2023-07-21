@@ -25,7 +25,8 @@ const Login = () => {
         const user = userCredential.user;
         console.log('User logged in:', user);
         setLoginStatus('Login successful');
-        navigate("/home")
+        // localStorage.setItem('userToken', userCredential.accessToken);
+        navigate("/")
       
       })
       .catch((error) => {
@@ -44,6 +45,7 @@ const Login = () => {
         const user = result.user;
         console.log('User signed in with Google:', user);
         setLoginStatus('Google sign-in successful');
+        // localStorage.setItem('userToken', result.credential.accessToken);
         navigate('/');
       })
       .catch((error) => {

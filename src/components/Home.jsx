@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link,  } from 'react-router-dom';
 import profileImage from '../assets/person.jpg';
 
 const Home = () => {
@@ -11,7 +12,7 @@ const Home = () => {
         <p className="text-lg text-white font-semibold">Let's play</p>
         <p className="text-white font-medium">Level up</p>
       </div>
-      <button className="px-10 py-1 mt-8 text-sm text-white font-semibold rounded-full border border-green-200 hover:text-green hover:bg-green-600 hover:border-green focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2">Play Now</button>
+      <button className="px-10 py-1 mt-8 text-sm text-white font-semibold rounded-full border border-green-400 hover:text-green hover:bg-green-800 hover:border-green focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2"><Link to='/quiz'>PLay Now</Link></button>
     </div>
   );
 }
