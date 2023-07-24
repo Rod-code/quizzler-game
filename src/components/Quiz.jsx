@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../config/firebase';
-
+// import useAuth from './UseAuth';
 import { getDocs, collection, addDoc,  doc, orderBy, query, limit, setDoc} from 'firebase/firestore';
 import { Link,  } from 'react-router-dom';
 
 // import congratulations from '../assets/congratulations.jpg';
 
 const Quiz = () => {
+  // useAuth();
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);

@@ -56,7 +56,7 @@ const Signup = () => {
         const user = result.user;
         console.log('User signed in with Google:', user);
         setRegistrationStatus('Google sign-in successful');
-        
+        localStorage.setItem('userToken', result.user.accessToken);
         navigate('/');
       })
       .catch((error) => {

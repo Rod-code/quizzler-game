@@ -16,7 +16,7 @@ const Login = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
- ;
+ 
   const handleLogin = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
@@ -25,7 +25,8 @@ const Login = () => {
         const user = userCredential.user;
         console.log('User logged in:', user);
         setLoginStatus('Login successful');
-        // localStorage.setItem('userToken', userCredential.accessToken);
+        localStorage.setItem('userToken', userCredential.user.accessToken);
+      
         navigate("/")
       
       })
@@ -45,7 +46,7 @@ const Login = () => {
         const user = result.user;
         console.log('User signed in with Google:', user);
         setLoginStatus('Google sign-in successful');
-        // localStorage.setItem('userToken', result.credential.accessToken);
+        localStorage.setItem('userToken', result.user.accessToken);
         navigate('/');
       })
       .catch((error) => {

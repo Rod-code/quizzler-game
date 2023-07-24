@@ -11,7 +11,7 @@ const Home = () => {
     // Perform the logout action here, such as clearing user session
     // For demonstration purposes, let's simply log a message to the console
     console.log('Logged out!');
-
+    localStorage.removeItem('userToken');
     // Redirect to the login page
     navigate("/login"); // Replace '/login' with the actual path to your login page
   };
